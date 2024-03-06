@@ -4,24 +4,26 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
-      <h2>Hello navbar</h2>
+      {/* <h2>Hello navbar</h2> */}
       {/* <NavLink> <div> <MdHomeFilled/> Home </div></NavLink> */}
-      <NavLink to={"/"}>
-        {" "}
-        <div> Home </div>
-      </NavLink>
-      <NavLink to={"/mens"}>
-        {" "}
-        <div> Men </div>
-      </NavLink>
-      <NavLink to={"/womens"}>
-        {" "}
-        <div> Women </div>
-      </NavLink>
-      <NavLink to={"/kids"}>
-        {" "}
-        <div> Kids </div>
-      </NavLink>
+      <div style={{ display: "flex", margin: "10px", padding: "20px" }}>
+        <NavLink to={"/"}>
+          {" "}
+          <div style={{ padding: "20px" }}> Home </div>
+        </NavLink>
+        <NavLink to={"/mens"}>
+          {" "}
+          <div style={{ padding: "20px" }}> Men </div>
+        </NavLink>
+        <NavLink to={"/womens"}>
+          {" "}
+          <div style={{ padding: "20px" }}> Women </div>
+        </NavLink>
+        <NavLink to={"/kids"}>
+          {" "}
+          <div style={{ padding: "20px" }}> Kids </div>
+        </NavLink>
+      </div>
     </>
   );
 };
