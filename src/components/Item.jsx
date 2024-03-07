@@ -2,15 +2,15 @@
 
 import { Link } from "react-router-dom";
 
-const Item = ({ id, name, image, price, rating, props }) => {
-  console.log(props);
+const Item = ({ id, name, price, rating }) => {
+  // console.log(props);
+  console.log(id);
   return (
     <>
       <div>
-        <Link to={`product/${id}`}></Link>
-      </div>
-      <div>
-        <h4>{name}</h4>
+        <Link to={`product/${id}`}>
+          <h4>{name}</h4>
+        </Link>
         <p>{price}</p>
         <p>{rating}</p>
       </div>
