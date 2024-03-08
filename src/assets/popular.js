@@ -1,41 +1,39 @@
 const POPULAR = [
-    {
-      id: 1,
-      name: "Smartphone",
-      category: "Electronics",
-      price: 599.99,
-      rating: 4.5
-    },
-    {
-      id: 2,
-      name: "Laptop",
-      category: "Electronics",
-      price: 1299.99,
-      rating: 4.8
-    },
-    {
-      id: 3,
-      name: "Headphones",
-      category: "Electronics",
-      price: 149.99,
-      rating: 4.3
-    },
-    {
-      id: 4,
-      name: "Running Shoes",
-      category: "Sports",
-      price: 89.99,
-      rating: 4.6
-    },
-    {
-      id: 5,
-      name: "Backpack",
-      category: "Fashion",
-      price: 39.99,
-      rating: 4.1
-    }
-  ];
-  
-  
-  export default POPULAR
-  
+  {
+    id: 1,
+    name: "Men's T-Shirt",
+    category: "Men",
+    price: 29.99,
+    rating: 4.2,
+  },
+  {
+    id: 2,
+    name: "Women's Dress",
+    category: "Women",
+    price: 49.99,
+    rating: 4.5,
+  },
+  {
+    id: 3,
+    name: "Kids' Toy Car",
+    category: "Kids",
+    price: 19.99,
+    rating: 4.7,
+  },
+  {
+    id: 4,
+    name: "Men's Sneakers",
+    category: "Men",
+    price: 79.99,
+    rating: 4.8,
+  },
+  {
+    id: 5,
+    name: "Women's Handbag",
+    category: "Women",
+    price: 69.99,
+    rating: 4.3,
+  },
+];
+
+export default POPULAR;

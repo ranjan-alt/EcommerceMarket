@@ -1,4 +1,4 @@
-//this component is called in popular component(parent)
+//this component is called in popular component(parent) and many other components
 
 import { Link } from "react-router-dom";
 
@@ -8,7 +8,7 @@ const Item = ({ id, name, price, rating }) => {
   return (
     <>
       <div>
-        <Link to={`product/${id}`}>
+        <Link to={`/product/${id}`}>
           <h4>{name}</h4>
         </Link>
         <p>{price}</p>
