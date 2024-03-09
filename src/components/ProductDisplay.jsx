@@ -5,7 +5,7 @@ import { MdStar } from "react-icons/md";
 import { ShopContext } from "../Context/ShopContext";
 
 const ProductDisplay = (props) => {
-  console.log(props);
+  // console.log(props);
   const { product } = props;
   const { addToCart } = useContext(ShopContext);
   return (
