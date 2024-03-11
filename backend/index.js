@@ -100,21 +100,21 @@ app.post("/addproduct", async (req, res) => {
 });
 
 //api for removing the product
-app.post("/removeproduct", async(req,res)=>{
-  await Product.findOneAndDelete({id:req.body.id});
-  console.log("removed the product")
+app.post("/removeproduct", async (req, res) => {
+  await Product.findOneAndDelete({ id: req.body.id });
+  console.log("removed the product");
   res.json({
-    success:true,
-    name:req.body.name
-  })
-})
+    success: true,
+    name: req.body.name,
+  });
+});
 
 //api for getting allproducts
-app.get("/allproduct", async(req,res)=>{
-  const products = await Product.find({})
-  console.log("All products fetched")
-  res.send(products)
-})
+app.get("/allproduct", async (req, res) => {
+  const products = await Product.find({});
+  console.log("All products fetched");
+  res.send(products);
+});
 
 app.listen(port, (error) => {
   if (!error) {
@@ -123,3 +123,4 @@ app.listen(port, (error) => {
     console.log("error:" + error);
   }
 });
+
