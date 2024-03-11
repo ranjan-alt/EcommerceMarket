@@ -20,30 +20,43 @@ const AddProduct = () => {
 
   const Add_Product = async () => {
     console.log(productDetails);
-    let responseData;
+    // let responseData;
     let product = productDetails;
 
-    let formData = new FormData();
-    formData.append("product", image);
+    // let formData = new FormData();
+    // formData.append("product", image);
 
-    await fetch("http://localhost:4000/upload", {
+    // await fetch("http://localhost:4000/upload", {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json",
+    //   },
+    //   body: formData,
+    // })
+    //   .then((resp) => {
+    //     resp.json();
+    //   })
+    //   .then((data) => {
+    //     responseData = data;
+    //   });
+
+    // if (responseData.success) {
+    //   product.image = responseData.image_url;
+    //   console.log(product);
+    //  }
+
+    await fetch("http://localhost:4000/addproduct", {
       method: "POST",
       headers: {
         Accept: "application/json",
+        "Content-type": "application/json",
       },
-      body: formData,
+      body: JSON.stringify(product),
     })
-      .then((resp) => {
-        resp.json();
-      })
-      .then((data) => {
-        responseData = data;
-      });
-
-    if (responseData.success) {
-      product.image = responseData.image_url;
-      console.log(product);
-    }
+      .then((resp) => resp.json())
+      .then((data) =>
+        data.success ? alert("Product added") : alert("Failed to add")
+      );
   };
   return (
     <>

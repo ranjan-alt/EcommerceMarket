@@ -14,6 +14,14 @@ mongoose.connect(
   "mongodb+srv://admin:admin@cluster0.yedo6v8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 );
 
+const db = mongoose.connection;
+
+// Event listeners for the connection
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+db.once("open", function() {
+  console.log("MongoDB connected successfully!");
+});
+
 //api creation
 app.get("/", (req, res) => {
   res.send("Express app is running");
