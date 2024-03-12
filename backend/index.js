@@ -18,7 +18,7 @@ const db = mongoose.connection;
 
 // Event listeners for the connection
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
-db.once("open", function() {
+db.once("open", function () {
   console.log("MongoDB connected successfully!");
 });
 
@@ -52,7 +52,7 @@ app.post("/upload", upload.single("product"), (req, res) => {
 const Product = mongoose.model("Product", {
   id: {
     type: Number,
-    required: true,
+    required: false,
   },
   name: {
     type: String,
@@ -60,7 +60,7 @@ const Product = mongoose.model("Product", {
   },
   image: {
     type: String,
-    required: true,
+    required: false,
   },
   category: {
     type: String,
@@ -82,15 +82,15 @@ const Product = mongoose.model("Product", {
 
 //addProduct controller
 app.post("/addproduct", async (req, res) => {
-  // let products = await Product.find({});
-  // let id;
-  // if (products.length > 0) {
-  //   let last_product_array = products.slice(-1);
-  //   let last_product = last_product_array[0];
-  //   id = last_product + 1;
-  // } else {
-  //   id = 1;
-  // }
+  let products = await Product.find({});
+  let id;
+  if (products.length > 0) {
+    let last_product_array = products.slice(-1);
+    let last_product = last_product_array[0];
+    id = last_product + 1;
+  } else {
+    id = 1;
+  }
   const product = new Product({
     id: req.body.id,
     name: req.body.name,
@@ -131,4 +131,3 @@ app.listen(port, (error) => {
     console.log("error:" + error);
   }
 });
-
