@@ -51,8 +51,8 @@ app.post("/upload", upload.single("product"), (req, res) => {
 //schema for creating products
 const Product = mongoose.model("Product", {
   id: {
-    type: Number,
-    required: false,
+    type: String,
+    required: true,
   },
   name: {
     type: String,
@@ -122,6 +122,78 @@ app.get("/allproduct", async (req, res) => {
   const products = await Product.find({});
   console.log("All products fetched");
   res.send(products);
+});
+
+//schema user modal
+
+const User = mongoose.model("User", {
+  name: {
+    type: String,
+  },
+  email: {
+    type: String,
+    unique: true,
+  },
+  password: {
+    type: String,
+  },
+  carData: {
+    type: Object,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+//CREATING ENDPOINT FOR REGISTERING THE USER
+app.post("/signup", async (req, res) => {
+  let check = await User.findOne({ email: req.body.email });
+  if (check) {
+    return res.status(400).json({
+      success: false,
+      errors: "Exisitng user found with same email address",
+    });
+  }
+  let cart = {};
+  for (let i = 0; i < 300; i++) {
+    cart[i] = 0;
+  }
+  const user = new User({
+    name: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+    CartData: cart,
+  });
+  await user.save();
+  const data = {
+    user: {
+      id: user.id,
+    },
+  };
+  const token = jwt.sign(data, "secret_ecom");
+  res.json({ success: true, token });
+});
+
+//Creating ENDPOINT for USER LOGIN
+app.post("/login", async (req, res) => {
+  let user = await User.findOne({ email: req.body.email });
+  if (user) {
+    const passMatch = req.body.password === user.password;
+    if (passMatch) {
+      const data = {
+        user: {
+          id: user.id,
+        },
+      };
+      const token = jwt.sign(data, "secret_ecom");
+      res.json({ success: true, token });
+    } else {
+      res.json({ success: false, errors: "wrong password" });
+    }
+  } else {
+    res.json({ success: false, error: "wrong Email address" });
+  }
 });
 
 app.listen(port, (error) => {
