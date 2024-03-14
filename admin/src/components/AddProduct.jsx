@@ -111,7 +111,7 @@ const AddProduct = () => {
           onChange={changeHandler}
         >
           <option value="Women">women</option>
-          <option value="men">men</option>
+          <option value="Men">men</option>
           <option value="Kids">Kids</option>
         </select>
       </div>
