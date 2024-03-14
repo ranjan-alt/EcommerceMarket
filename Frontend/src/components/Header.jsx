@@ -19,10 +19,19 @@ const Header = () => {
         <NavLink to={"cart-page"}>
           <FaOpencart /> <span>{getTotalCartItem()}</span>
         </NavLink>
-        <NavLink to={"logout"}>
-          <p>Logout</p>
-        </NavLink>
-        <NavLink to={"login"}>Login</NavLink>
+        {localStorage.getItem("auth-token") ? (
+          <NavLink
+            onClick={() => {
+              localStorage.removeItem("auth-token");
+              window.location.replace("/");
+            }}
+            to={"logout"}
+          >
+            Logout
+          </NavLink>
+        ) : (
+          <NavLink to={"login"}>Login</NavLink>
+        )}
       </div>
     </div>
   );
