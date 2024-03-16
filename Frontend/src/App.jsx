@@ -22,9 +22,18 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/mens" element={<Category category="Men" banner={bannermens}/>} />
-          <Route path="/womens" element={<Category  category="Women" banner={bannerwomen}/>} />
-          <Route path="/kids" element={<Category category="Kids" banner={bannerkids} />} />
+          <Route
+            path="/mens"
+            element={<Category category="Men" banner={bannermens} />}
+          />
+          <Route
+            path="/womens"
+            element={<Category category="Women" banner={bannerwomen} />}
+          />
+          <Route
+            path="/kids"
+            element={<Category category="Kids" banner={bannerkids} />}
+          />
           <Route path="/product" element={<Product />}>
             <Route path=":productId" element={<Product />} />
           </Route>

@@ -1,11 +1,18 @@
-import LATEST from "../assets/latest";
+// import LATEST from "../assets/latest";
+import { useEffect, useState } from "react";
 import Item from "./Item";
 
 const NewCollections = () => {
+  const [new_collection, setNew_collection] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:4000/newcollection")
+      .then((response) => response.json())
+      .then((data) => setNew_collection(data));
+  }, []);
   return (
     <>
       <h1>NEW COLLECTION</h1>
-      {LATEST.map((item) => (
+      {new_collection.map((item) => (
         <Item
           key={item.id}
           id={item.id}

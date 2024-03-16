@@ -8,13 +8,19 @@ import RelatedProducts from "../components/RelatedProducts";
 
 const Product = () => {
   const { all_products } = useContext(ShopContext);
+
+  console.log("All Products:", all_products);
   // console.log(all_products);
   const { productId } = useParams();
 
-  // Convert productId to a number
-  const productIdNumber = parseInt(productId);
+  console.log("Product ID from URL:", typeof productId);
 
-  const product = all_products.find((e) => e.id === productIdNumber);
+  // Convert productId to a number
+  // const productIdNumber = parseInt(productId);
+
+  const product = all_products.find((e) => e.id === productId);
+
+  console.log("Found Product:", product);
   // console.log(product, "ranjan");
   if (!product) {
     return <div>Product not found</div>;

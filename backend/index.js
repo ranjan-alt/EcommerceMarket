@@ -196,6 +196,22 @@ app.post("/login", async (req, res) => {
   }
 });
 
+//creatinf emdpoint for latest product
+app.get("/newcollection", async (req, res) => {
+  let products = await Product.find({});
+  let newcollection = products.slice(1).slice(-8);
+  console.log("new collection fetched");
+  res.send(newcollection);
+});
+
+// creating endpoint for popular porduct
+app.get("/popularproduct", async (req, res) => {
+  let products = await Product.find({ category: "Men" });
+  let popularproducts = products.slice(0, 4);
+  console.log("popular products");
+  res.send(popularproducts);
+});
+
 app.listen(port, (error) => {
   if (!error) {
     console.log("Server is running on port" + port);

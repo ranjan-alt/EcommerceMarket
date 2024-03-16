@@ -1,11 +1,18 @@
 import { Link, NavLink } from "react-router-dom";
 import Navbar from "./Navbar";
 import { FaOpencart } from "react-icons/fa";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../Context/ShopContext";
 
 const Header = () => {
   const { getTotalCartItem } = useContext(ShopContext);
+
+  const [cartItemCount, setCartItemCount] = useState(getTotalCartItem());
+
+  useEffect(() => {
+    setCartItemCount(getTotalCartItem());
+  }, [getTotalCartItem]);
+
   return (
     <div style={{ display: "flex", flexDirection: "row", margin: "10px" }}>
       {/* {logo} */}
@@ -17,7 +24,7 @@ const Header = () => {
       {/* <div>buttons</div> //add hamburger here and do the styling */}
       <div style={{ display: "flex" }}>
         <NavLink to={"cart-page"}>
-          <FaOpencart /> <span>{getTotalCartItem()}</span>
+          <FaOpencart /> <span>{cartItemCount}</span>
         </NavLink>
         {localStorage.getItem("auth-token") ? (
           <NavLink

@@ -16,7 +16,7 @@ const ProductDisplay = (props) => {
         <MdStar />
         <MdStar />
         <MdStar />
-        <p>111</p>
+        <p>{product.price}</p>
         <h1>{product.name}</h1>
         <h4>Select size</h4>
         <div>S</div>
@@ -24,7 +24,10 @@ const ProductDisplay = (props) => {
         <div>L</div>
         <button
           style={{ border: "2px solid red" }}
-          onClick={() => addToCart(product.id)}
+          onClick={() => {
+            console.log("Adding product to cart:", product.id);
+            addToCart(product.id);
+          }}
         >
           Add to cart
         </button>
